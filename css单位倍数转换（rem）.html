@@ -98,11 +98,12 @@ a:hover .card{
   
 let onereg = /(-?[0-9]*[\.]?[0-9]*px)/i;    //正则表达式替换px前数值
 let changeMultiple = 19.2;	//19.2为px转rem的比例值
+let unit = 'rem';	//转换单位
 
 let rexStr = null;
 rexStr = str.match(onereg); 
  while(rexStr){  
-	str = str.replace(onereg,' ' +(parseFloat(rexStr[0].split('p')[0]) / changeMultiple).toFixed(3) + 'rem'); 
+	str = str.replace(onereg,' ' +(parseFloat(rexStr[0].split('p')[0]) / changeMultiple).toFixed(3) + unit); 
 	rexStr = str.match(onereg);
  } 
  console.log(str) //输出替换后css
