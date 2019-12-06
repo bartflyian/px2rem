@@ -6,6 +6,7 @@
 </body> 
 
 <script> 
+//复制你的css代码替换str
 var str=`.bg{
     width: 100%;
     height: 100%;
@@ -95,14 +96,15 @@ a:hover .card{
 
 `
   
-let onereg = /(-?[0-9]*[\.]?[0-9]*px)/i;    
- 
+let onereg = /(-?[0-9]*[\.]?[0-9]*px)/i;    //正则表达式替换px前数值
+let changeMultiple = 19.2;	//19.2为px转rem的比例值
+
 let rexStr = null;
 rexStr = str.match(onereg); 
  while(rexStr){  
-	str = str.replace(onereg,' ' +(parseFloat(rexStr[0].split('p')[0]) / 19.2).toFixed(3) + 'rem');
+	str = str.replace(onereg,' ' +(parseFloat(rexStr[0].split('p')[0]) / changeMultiple).toFixed(3) + 'rem'); 
 	rexStr = str.match(onereg);
  } 
- console.log(str) 
+ console.log(str) //输出替换后css
 </script>
 </html>
