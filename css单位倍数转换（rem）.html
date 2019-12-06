@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<meta charset='utf-8'> 
+<html>
+<body>
+    <div id="css-str">按F12切换到console查看转换后css</div>
+</body> 
+
+<script> 
+var str=`.bg{
+    width: 100%;
+    height: 100%;
+    background: url(../imgs/icon/beijing@2x.png) no-repeat;
+    background-size: 100% 100%;
+}
+.card{ 
+    border:8.5px solid rgba(241, 241, 241, 0.3);
+}
+.several-month{
+    width: 414px;
+    height: 580px; 
+    box-shadow: 0px 4px 21px 5px rgba(18,60,136,0.38);
+    background: url(../imgs/icon/cost9.9@2x.png) no-repeat;
+    background-size: 414px 580px;
+    border-radius: 30px;
+    position: absolute;
+    top: 222px;
+    left: 440px;
+}
+
+.several-month::after{
+    content: '';
+    position: absolute;
+    bottom: -139px;
+    left: 0;
+    width: 414px;
+    height: 103px;
+    background: url(../imgs/icon/shadow1@2x.png) no-repeat;
+    background-size: 414px 103px;
+}
+
+.one-month{
+    width: 414px;
+    height: 580px;
+    box-shadow: 0px 4px 21px 5px rgba(18,60,136,0.38);
+    background: url(../imgs/icon/cost19.9@2x.png) no-repeat;
+    background-size: 414px 580px;
+    border-radius: 30px;
+    position: absolute;
+    top: 222px;
+    left: 988px;
+}
+
+.one-month::after{
+    content: '';
+    position: absolute;
+    bottom: -139px;
+    left: 0;
+    width: 414px;
+    height: 103px;
+    background: url(../imgs/icon/shadow2@2x.png) no-repeat;
+    background-size: 414px 103px;
+}
+
+a:hover .card{ 
+    border: 8px solid rgba(241, 241, 241, 1);
+    box-shadow: 0px 0px 10px 5px rgba(241, 241, 241, 0.5);
+}
+
+.card .price{
+    display: block;
+    font-size: 36px; 
+    font-weight:bold;
+    color:rgba(241,241,241,1);  
+    margin: 34px 0 0 41px;
+    letter-spacing: -15px;
+}
+.card .price b{
+    font-size: 72px;  
+    letter-spacing: 10px;
+}
+.card .way{
+    font-size: 36px; 
+    font-weight: 500;
+    color:rgba(241,241,241,1);
+    line-height: 30px;
+    margin: 10px 0 0 37px;
+    letter-spacing: 5px;
+}
+.card .way b{
+    font-size: 30px; 
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-left: 10px;
+}
+
+`
+  
+let onereg = /(-?[0-9]*[\.]?[0-9]*px)/i;    
+ 
+let rexStr = null;
+rexStr = str.match(onereg); 
+ while(rexStr){  
+	str = str.replace(onereg,' ' +(parseFloat(rexStr[0].split('p')[0]) / 19.2).toFixed(3) + 'rem');
+	rexStr = str.match(onereg);
+ } 
+ console.log(str) 
+</script>
+</html>
